@@ -26,7 +26,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
                     public void actionPerformed(ActionEvent e)
                     {
                         NewConcertFrame newConcert=new NewConcertFrame();
-                        newConcert.show();
+                        newConcert.setVisible(true);
                     }
                 }) ;
         jButton2.addActionListener
@@ -35,7 +35,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
                     public void actionPerformed(ActionEvent e)
                     {
                         CurrentConcertFrame currentConcert=new CurrentConcertFrame();
-                        currentConcert.show();
+                        currentConcert.setVisible(true);
                     }
                 }) ;
     }

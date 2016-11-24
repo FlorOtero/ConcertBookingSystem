@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package concertbookingsystem;
-
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.event.*;
 /**
  *
  * @author Flor
@@ -16,6 +19,32 @@ public class NewConcertFrame extends javax.swing.JFrame {
      */
     public NewConcertFrame() {
         initComponents();
+        jButton1.addActionListener
+                (new ActionListener()
+                {
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        //Need a way to going to the previous frame.
+                    }
+                }) ;
+        jButton2.addActionListener
+                (new ActionListener()
+                {
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        //Need a way to going to the previous frame.
+                    }
+                }) ;
+        jButton3.addActionListener
+                (new ActionListener()
+                {
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        SetPricesFrame setPrices=new SetPricesFrame();
+                        setPrices.setVisible(true);
+                    }
+                }) ;
+               
     }
 
     /**
