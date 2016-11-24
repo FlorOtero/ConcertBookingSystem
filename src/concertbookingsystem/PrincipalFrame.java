@@ -18,26 +18,9 @@ public class PrincipalFrame extends javax.swing.JFrame {
     /**
      * Creates new form PrincipalFrame
      */
-    public PrincipalFrame() {
+    public PrincipalFrame() 
+    {
         initComponents();
-        jButton1.addActionListener
-                (new ActionListener()
-                {
-                    public void actionPerformed(ActionEvent e)
-                    {
-                        NewConcertFrame newConcert=new NewConcertFrame();
-                        newConcert.setVisible(true);
-                    }
-                }) ;
-        jButton2.addActionListener
-                (new ActionListener()
-                {
-                    public void actionPerformed(ActionEvent e)
-                    {
-                        CurrentConcertFrame currentConcert=new CurrentConcertFrame();
-                        currentConcert.setVisible(true);
-                    }
-                }) ;
     }
 
     /**
@@ -56,8 +39,18 @@ public class PrincipalFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("New concert");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Current Concert");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -93,6 +86,18 @@ public class PrincipalFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        NewConcertFrame newConcert=new NewConcertFrame();
+        newConcert.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        CurrentConcertFrame currentConcert=new CurrentConcertFrame();
+        currentConcert.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

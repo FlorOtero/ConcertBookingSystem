@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package concertbookingsystem;
+import javax.swing.*;
 
 /**
  *
@@ -17,6 +18,8 @@ public class ConcertBookingSystem {
     public static void main(String[] args) {
         PrincipalFrame myFrame=new PrincipalFrame();
         myFrame.setVisible(true);
+        myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
     }
     
 }
