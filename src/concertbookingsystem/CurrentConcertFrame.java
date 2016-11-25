@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package concertbookingsystem;
-
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.event.*;
 /**
  *
  * @author Flor
@@ -16,6 +19,7 @@ public class CurrentConcertFrame extends javax.swing.JFrame {
      */
     public CurrentConcertFrame() {
         initComponents();
+        seats();
     }
 
     /**
@@ -71,27 +75,24 @@ public class CurrentConcertFrame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addComponent(jButton3)
                 .addGap(40, 40, 40)
                 .addComponent(jButton4)
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 348, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
+                .addGap(88, 88, 88)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 286, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
@@ -201,6 +202,37 @@ public class CurrentConcertFrame extends javax.swing.JFrame {
                 new CurrentConcertFrame().setVisible(true);
             }
         });
+    }
+    private void seats()
+    {
+        /*we should try something like this, with a layout to be able to 
+        set the rows and colums and put in buttons.
+        */
+        GridLayout experimentLayout= new GridLayout(10,3);
+        JPanel tryPane=new JPanel();
+        tryPane.setLayout(experimentLayout);
+        
+        /* JToggleButton g[][], s[][], b[][];
+        b=new JToggleButton[10][3];
+        for(int y = 0; y <4 ; y++)
+        {
+                    for(int x = 0; x < 11; x++)
+                    {
+                        b[x][y] = new JToggleButton(); // Creates New JButton
+                        //l[x][y].addActionListener(this);
+                        //seatsAvailable.add("L" + y + x);
+                        jPanel1.add(b[x][y]); //adds button to grid
+                    }
+        }*/
+        JButton b;
+        for(int i=0; i<31;i++){
+            
+                b=new JButton();
+                tryPane.add(b);
+            
+        }
+        this.add(tryPane);
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
