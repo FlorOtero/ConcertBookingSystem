@@ -13,11 +13,11 @@ import javax.swing.*;
  */
 public class Seats extends JButton implements ActionListener {
     public Seats(int posx,int posy, int width, int height){
-       this.setBounds(posx, posy, width, height);
-       this.setBackground(new java.awt.Color(255, 204, 102));
-       this.addActionListener(this);
+       setBounds(posx, posy, width, height);
+       //setBackground(new java.awt.Color(255, 204, 102));
+       addActionListener(this);
     }
     public void actionPerformed(ActionEvent e) {
-        this.setBackground(Color.RED);
+        setBackground(Color.RED);
     }
 }
