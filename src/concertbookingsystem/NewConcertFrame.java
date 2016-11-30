@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
+import java.io.*;
 /**
  *
  * @author Flor
@@ -167,9 +168,30 @@ public class NewConcertFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PrincipalFrame myFrame=new PrincipalFrame();
-        myFrame.setVisible(true);
-        dispose();        
+        String fileConcert = "concert.txt";
+        try {
+
+            FileWriter fileWriter = new FileWriter(fileConcert);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(jTextField1.getText());
+            bufferedWriter.newLine();
+            bufferedWriter.write(jTextField2.getText());
+            bufferedWriter.newLine();
+            bufferedWriter.write(jTextField3.getText());
+            bufferedWriter.newLine();
+            bufferedWriter.write(jTextField4.getText());
+            bufferedWriter.newLine();
+            bufferedWriter.write(jTextField5.getText());
+            bufferedWriter.close();
+        }
+        catch(IOException ex) {
+            ex.printStackTrace();
+        }
+        finally{
+            PrincipalFrame myFrame=new PrincipalFrame();
+            myFrame.setVisible(true);
+            dispose();  
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
