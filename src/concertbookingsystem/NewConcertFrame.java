@@ -141,6 +141,11 @@ public class NewConcertFrame extends javax.swing.JFrame {
         jMenu1.setText("Menu");
 
         jMenuItem2.setText("Clear");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
@@ -200,6 +205,16 @@ public class NewConcertFrame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        clearTextFields();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void clearTextFields(){
+        jTextField1.setText(null);
+        jTextField2.setText(null);
+        jTextField3.setText(null);
+        jTextField4.setText(null);
+        jTextField5.setText(null);
+    }
     /**
      * @param args the command line arguments
      */
@@ -234,6 +249,7 @@ public class NewConcertFrame extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
