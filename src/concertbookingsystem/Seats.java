@@ -11,7 +11,7 @@ import javax.swing.*;
  *
  * @author Flor
  */
-public class Seats extends JButton implements ActionListener {
+public class Seats extends JButton  {
     public Seats(int posx,int posy,int width,int height, SeatingState seat){
        setBounds(posx, posy, width, height);
        addActionListener(new ActionListener(){
@@ -19,8 +19,7 @@ public class Seats extends JButton implements ActionListener {
             setBackground(Color.RED);
             seat.setState(-1, posx, posy);
         }
-    });
-      
+        });
     }
 }
 

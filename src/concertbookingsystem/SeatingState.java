@@ -18,6 +18,7 @@ public  class SeatingState {
     public int getState(int row, int column){
         return index[row][column].state;
     }
+    // 0 for available, -1 for selected and 1 for booked
     public void setState(int seatState, int row, int column){
         index[row][column].state= seatState;
     }
