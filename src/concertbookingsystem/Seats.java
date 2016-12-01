@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package concertbookingsystem;
-import java.awt.*;
+import java.awt.Color;
 import java.awt.event.*;
 import javax.swing.*;
 /**
@@ -12,13 +12,15 @@ import javax.swing.*;
  * @author Flor
  */
 public class Seats extends JButton implements ActionListener {
-    public Seats(int posx,int posy,int width,int height){
-       this.setBounds(posx, posy, width, height);
-       this.addActionListener(this);
-    }
-    public void actionPerformed(ActionEvent e) 
-    {
-        this.setBackground(Color.RED);
+    public Seats(int posx,int posy,int width,int height, SeatingState seat){
+       setBounds(posx, posy, width, height);
+       addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent evt) {
+            setBackground(Color.RED);
+            seat.setState(-1, posx, posy);
+        }
+    });
+      
     }
 }
 
