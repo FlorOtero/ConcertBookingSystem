@@ -9,7 +9,7 @@ package concertbookingsystem;
  *
  * @author Flor
  */
-public class SeatingState {  
+public  class SeatingState {  
     public class Index{
         int state=0;
         String name;
