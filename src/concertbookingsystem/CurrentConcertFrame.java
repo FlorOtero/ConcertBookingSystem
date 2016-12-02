@@ -6,8 +6,8 @@
 package concertbookingsystem;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import javax.swing.*;
+import java.util.Random;
 /**
  *
  * @author Flor
@@ -15,9 +15,9 @@ import javax.swing.*;
 public class CurrentConcertFrame extends javax.swing.JFrame 
 {
     int rows=3, columns=10;
-    SeatingState seatingG;
-    SeatingState seatingS;
-    SeatingState seatingB;
+    SeatingStateG seatingG;
+    SeatingStateS seatingS;
+    SeatingStateB seatingB;
     /*SeatingStateGold stateG;
     SeatingStateSilver stateS;
     SeatingStateBronze stateB;*/
@@ -35,7 +35,7 @@ public class CurrentConcertFrame extends javax.swing.JFrame
             switch(i)
             {
                 case 1: 
-                    seatingG= new SeatingState();
+                    seatingG= new SeatingStateG();
                     for(int row=0; row<rows;row++)
                     {
                         for(int column=0;column<columns; column++)
@@ -47,7 +47,7 @@ public class CurrentConcertFrame extends javax.swing.JFrame
                     }  
                     break ;    
                 case 2:
-                    seatingS= new SeatingState();
+                    seatingS= new SeatingStateS();
                     for(int row=0; row<rows;row++)
                     {
                         for(int column=0;column<columns; column++)
@@ -59,7 +59,7 @@ public class CurrentConcertFrame extends javax.swing.JFrame
                     }   
                     break ;
                 case 3: 
-                    seatingB= new SeatingState(); 
+                    seatingB= new SeatingStateB(); 
                     Color bronze = new Color(204,153,102);
                     for(int row=0; row<rows;row++)
                     {
@@ -289,8 +289,15 @@ public class CurrentConcertFrame extends javax.swing.JFrame
                 if(seatingS.getState(r, c)==-1){
                     seatingS.setState(1, r, c);
                     seatingS.setName(name, r, c);
+                    int resp = JOptionPane.showConfirmDialog(null, "Do you want a free programme?");
+                    if(resp==0){
+                        seatingS.setFreeProgramme(true, r, c);
+                    }
                 }
                 if(seatingB.getState(r, c)==-1){
+                   /* Random rnd = new Random();
+                    int num;
+                    num=(int)(rnd.nextDouble() * 100 + 0);*/
                     seatingB.setState(1, r, c);
                     seatingB.setName(name, r, c);
                 }
@@ -299,6 +306,9 @@ public class CurrentConcertFrame extends javax.swing.JFrame
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        /*Missing the message to let the users know that they cant unbook a seat in 
+        the bronze section.
+        */
         String name="";
         for(int r=0;r<rows;r++){
             for(int c=0;c<columns;c++){
@@ -309,6 +319,9 @@ public class CurrentConcertFrame extends javax.swing.JFrame
                 if(seatingS.getState(r, c)==-1){
                     seatingS.setState(0, r, c);
                     seatingS.setName(name, r, c);
+                    if(seatingS.getFreeProgramme(r, c)==true){
+                        seatingS.setFreeProgramme(false, r, c);
+                    }
                 }
             }
         }
