@@ -37,7 +37,7 @@ for ( WindowListener wl : this.getWindowListeners())
         @Override
         public void windowClosing(WindowEvent e) {
                  
-                      JOptionPane.showMessageDialog(null, "Please select the 'CLOSE' button to be able to save the changes");
+                      JOptionPane.showMessageDialog(null, "Please select the 'CLOSE' button to be able to save the changes, otherwise press 'Cancel'");
                  
         }
 });
