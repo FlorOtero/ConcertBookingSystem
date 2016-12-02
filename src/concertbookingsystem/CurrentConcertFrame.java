@@ -26,7 +26,9 @@ public class CurrentConcertFrame extends javax.swing.JFrame
     SeatingStateBronze stateB;*/
     public CurrentConcertFrame()
     {
+        
         initComponents();
+        this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         seatPlan();      
     }
 
