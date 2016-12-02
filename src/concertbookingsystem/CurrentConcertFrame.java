@@ -18,6 +18,9 @@ public class CurrentConcertFrame extends javax.swing.JFrame
     SeatingStateG seatingG;
     SeatingStateS seatingS;
     SeatingStateB seatingB;
+    int  book=0;
+    Random rnd = new Random();
+    int num=(int)(rnd.nextDouble() * 10 + 0);
     /*SeatingStateGold stateG;
     SeatingStateSilver stateS;
     SeatingStateBronze stateB;*/
@@ -283,9 +286,18 @@ public class CurrentConcertFrame extends javax.swing.JFrame
         String name = JOptionPane.showInputDialog("Enter name for the booking");
         for(int r=0;r<rows;r++){
             for(int c=0;c<columns;c++){
-                if(seatingG.getState(r, c)==-1){
-                    seatingG.setState(1, r, c);
-                    seatingG.setName(name, r, c);
+               if(seatingG.getState(r, c)==-1){
+              /*     if(book!=num){    
+                        book++;
+                   }else{
+                        JOptionPane.showConfirmDialog(null, "You have win a free access to backstage!");
+                        seatingG.setFreeAccess(true,r, c);
+                        book=0;
+                        Random rnd = new Random();
+                        num=(int)(rnd.nextDouble() * 10 + 0);
+                   }*/
+                    seatingB.setState(1, r, c);
+                    seatingB.setName(name, r, c);
                 }
                 if(seatingS.getState(r, c)==-1){
                     seatingS.setState(1, r, c);
@@ -296,9 +308,6 @@ public class CurrentConcertFrame extends javax.swing.JFrame
                     }
                 }
                 if(seatingB.getState(r, c)==-1){
-                   /* Random rnd = new Random();
-                    int num;
-                    num=(int)(rnd.nextDouble() * 100 + 0);*/
                     seatingB.setState(1, r, c);
                     seatingB.setName(name, r, c);
                 }

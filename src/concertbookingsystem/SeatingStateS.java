@@ -13,7 +13,7 @@ public class SeatingStateS extends SeatingState{
     public class Index{
         int state=0;
         String name;
-        boolean freeProgramme;
+        boolean freeProgramme=false;
         public void setState(int state) {
             this.state = state;
         }

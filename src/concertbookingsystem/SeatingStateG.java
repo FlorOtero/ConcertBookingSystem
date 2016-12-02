@@ -13,7 +13,7 @@ public class SeatingStateG extends SeatingState{
     public class Index{
         int state=0;
         String name;
-        boolean freeAccess;
+        boolean freeAccess=false;
         public void setState(int state) {
             this.state = state;
         }
