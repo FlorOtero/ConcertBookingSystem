@@ -28,7 +28,19 @@ public class CurrentConcertFrame extends javax.swing.JFrame
     {
         
         initComponents();
-        this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        //this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+//Remove any existing WindowListeners
+for ( WindowListener wl : this.getWindowListeners())
+        this.removeWindowListener(wl);
+        this.addWindowListener(new WindowAdapter() {
+        @Override
+        public void windowClosing(WindowEvent e) {
+                 
+                      JOptionPane.showMessageDialog(null, "Please select the 'CLOSE' button to be able to save the changes");
+                 
+        }
+});
         seatPlan();      
     }
 
