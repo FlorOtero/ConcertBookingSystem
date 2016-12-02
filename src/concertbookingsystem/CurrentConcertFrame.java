@@ -29,45 +29,46 @@ public class CurrentConcertFrame extends javax.swing.JFrame
 
     public void seatPlan()
     {
-        Seats[][] seat= new Seats[rows][columns];
         for(int i=1;i<4;i++)
         {
             switch(i)
             {
                 case 1: 
+                    SeatsG[][] seatG = new SeatsG[rows][columns];
                     seatingG= new SeatingStateG();
+                    
                     for(int row=0; row<rows;row++)
                     {
                         for(int column=0;column<columns; column++)
                         {  
-                            seat[row][column]= new Seats(45*column, 30*row, 15, 15, seatingG);
-                            seat[row][column].setBackground(Color.YELLOW);
-                            jPanel1.add(seat[row][column]);
+                            seatG[row][column]= new SeatsG(45*column, 30*row, 15, 15, seatingG);
+                            jPanel1.add(seatG[row][column]);
                         }
                     }  
                     break ;    
                 case 2:
                     seatingS= new SeatingStateS();
+                    SeatsS[][] seatS = new SeatsS[rows][columns];
                     for(int row=0; row<rows;row++)
                     {
                         for(int column=0;column<columns; column++)
                         {
-                            seat[row][column]= new Seats(45*column, 30*row, 15, 15, seatingS);
-                            seat[row][column].setBackground(Color.GRAY);
-                            jPanel3.add(seat[row][column]);
+                            seatS[row][column]= new SeatsS(45*column, 30*row, 15, 15, seatingS);
+                            jPanel3.add(seatS[row][column]);
                         }
                     }   
                     break ;
                 case 3: 
                     seatingB= new SeatingStateB(); 
+                    SeatsB[][] seatB = new SeatsB[rows][columns];
                     Color bronze = new Color(204,153,102);
                     for(int row=0; row<rows;row++)
                     {
                         for(int column=0;column<columns; column++)
                         {
-                            seat[row][column]= new Seats(45*column, 30*row, 15, 15, seatingB);
-                            seat[row][column].setBackground(bronze);                 
-                            jPanel4.add(seat[row][column]);
+                            seatB[row][column]= new SeatsB(45*column, 30*row, 15, 15, seatingB);
+                
+                            jPanel4.add(seatB[row][column]);
                         }
                     }  
                 break ;

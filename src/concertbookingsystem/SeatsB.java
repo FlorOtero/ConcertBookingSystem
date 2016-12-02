@@ -4,16 +4,21 @@
  * and open the template in the editor.
  */
 package concertbookingsystem;
+
 import java.awt.Color;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author Flor
+ * @author Mariano Dios
  */
-public abstract class Seats extends JButton  {
-   /* public Seats(int posx,int posy,int width,int height, SeatingState seat){
+public class SeatsB extends Seats{    
+    Color bronze = new Color(204,153,102);
+public SeatsB(int posx,int posy,int width,int height, SeatingStateB seat){
        setBounds(posx, posy, width, height);
+       setBackground(bronze); 
        addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent evt) {
            // setBackground(Color.RED);
@@ -24,11 +29,15 @@ public abstract class Seats extends JButton  {
                     break;
                 case -1:
                     seat.setState(-1, posy/30, posx/45);  
-                    setBackground(Color.GRAY);
+                    setBackground(bronze); 
+                    break;
+                case 1:
+                    JOptionPane.showConfirmDialog(null, "You can't unbook a seat", "Warning", JOptionPane.CLOSED_OPTION);
+                break;
             }
                 
         }
-        });*/
+        });
     }
-
-
+    
+}
