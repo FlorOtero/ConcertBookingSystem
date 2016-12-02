@@ -17,7 +17,7 @@ public class Seats extends JButton  {
        addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent evt) {
             setBackground(Color.RED);
-            seat.setState(-1, posx, posy);
+            seat.setState(-1, posy/30, posx/45);
         }
         });
     }

@@ -11,16 +11,31 @@ package concertbookingsystem;
  */
 public  class SeatingState {  
     public class Index{
-        int state;
+        int state=0;
         String name;
+
+        public void setState(int state) {
+            this.state = state;
+        }
     }
-    Index[][] index= new Index[10][3];      
+   Index[][] index= new Index[3][10];  
+   public SeatingState(){
+        for(int i=0;i<3;i++){
+            for(int j=0;j<10;j++){
+                if(index[i][j] == null){
+                  index[i][j]= new Index();
+          
+                }
+
+            }
+        }
+    }
     public int getState(int row, int column){
         return index[row][column].state;
     }
     // 0 for available, -1 for selected and 1 for booked
     public void setState(int seatState, int row, int column){
-        index[row][column].state= seatState;
+        index[row][column].setState(seatState);
     }
     public void setName(String userName, int row, int column){
         index[row][column].name=userName;
