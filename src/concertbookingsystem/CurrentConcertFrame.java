@@ -18,9 +18,7 @@ public class CurrentConcertFrame extends javax.swing.JFrame
     SeatingStateG seatingG;
     SeatingStateS seatingS;
     SeatingStateB seatingB;
-    /*SeatingStateGold stateG;
-    SeatingStateSilver stateS;
-    SeatingStateBronze stateB;*/
+
     public CurrentConcertFrame()
     {
         initComponents();
@@ -29,45 +27,47 @@ public class CurrentConcertFrame extends javax.swing.JFrame
 
     public void seatPlan()
     {
-        Seats[][] seat= new Seats[rows][columns];
+        //Seats[][] seat= new Seats[rows][columns];
+        //Seats[][] seat;
         for(int i=1;i<4;i++)
         {
             switch(i)
             {
                 case 1: 
                     seatingG= new SeatingStateG();
+                    SeatsG[][] seat=new SeatsG[rows][columns];
                     for(int row=0; row<rows;row++)
                     {
                         for(int column=0;column<columns; column++)
                         {  
-                            seat[row][column]= new Seats(45*column, 30*row, 15, 15, seatingG);
-                            seat[row][column].setBackground(Color.YELLOW);
+                            seat[row][column]= new SeatsG(45*column, 30*row, 15, 15, seatingG);
                             jPanel1.add(seat[row][column]);
                         }
                     }  
                     break ;    
                 case 2:
                     seatingS= new SeatingStateS();
+                    SeatsS[][] seatS=new SeatsS[rows][columns];
                     for(int row=0; row<rows;row++)
                     {
                         for(int column=0;column<columns; column++)
                         {
-                            seat[row][column]= new Seats(45*column, 30*row, 15, 15, seatingS);
-                            seat[row][column].setBackground(Color.GRAY);
-                            jPanel3.add(seat[row][column]);
+                            seatS[row][column]= new SeatsS(45*column, 30*row, 15, 15, seatingS);
+                            jPanel3.add(seatS[row][column]);
                         }
                     }   
                     break ;
                 case 3: 
                     seatingB= new SeatingStateB(); 
-                    Color bronze = new Color(204,153,102);
+                    SeatsB[][] seatB=new SeatsB[rows][columns];
+                    
                     for(int row=0; row<rows;row++)
                     {
                         for(int column=0;column<columns; column++)
                         {
-                            seat[row][column]= new Seats(45*column, 30*row, 15, 15, seatingB);
-                            seat[row][column].setBackground(bronze);                 
-                            jPanel4.add(seat[row][column]);
+                            seatB[row][column]= new SeatsB(45*column, 30*row, 15, 15, seatingB);
+                                             
+                            jPanel4.add(seatB[row][column]);
                         }
                     }  
                 break ;
@@ -283,6 +283,9 @@ public class CurrentConcertFrame extends javax.swing.JFrame
         for(int r=0;r<rows;r++){
             for(int c=0;c<columns;c++){
                 if(seatingG.getState(r, c)==-1){
+                    /* Random rnd = new Random();
+                    int num;
+                    num=(int)(rnd.nextDouble() * 100 + 0);*/
                     seatingG.setState(1, r, c);
                     seatingG.setName(name, r, c);
                 }
@@ -295,9 +298,6 @@ public class CurrentConcertFrame extends javax.swing.JFrame
                     }
                 }
                 if(seatingB.getState(r, c)==-1){
-                   /* Random rnd = new Random();
-                    int num;
-                    num=(int)(rnd.nextDouble() * 100 + 0);*/
                     seatingB.setState(1, r, c);
                     seatingB.setName(name, r, c);
                 }
