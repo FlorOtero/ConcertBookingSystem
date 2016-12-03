@@ -28,7 +28,7 @@ public SeatsB(int posx,int posy,int width,int height, SeatingStateB seat){
                     setBackground(Color.RED);
                     break;
                 case -1:
-                    seat.setState(-1, posy/30, posx/45);  
+                    seat.setState(0, posy/30, posx/45);  
                     setBackground(bronze); 
                     break;
                 case 1:
