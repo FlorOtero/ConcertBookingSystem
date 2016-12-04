@@ -397,7 +397,7 @@ for ( WindowListener wl : this.getWindowListeners())
                 
             }     
         JOptionPane.showMessageDialog(this, "Number of available seats " + available + " Number of booked seats " + booked,
-        	"Full Name", JOptionPane.PLAIN_MESSAGE) ;
+        	"Status", JOptionPane.PLAIN_MESSAGE) ;
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
