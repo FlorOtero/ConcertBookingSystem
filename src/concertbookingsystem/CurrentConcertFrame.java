@@ -101,6 +101,7 @@ for ( WindowListener wl : this.getWindowListeners())
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -108,8 +109,6 @@ for ( WindowListener wl : this.getWindowListeners())
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -150,6 +149,13 @@ for ( WindowListener wl : this.getWindowListeners())
             }
         });
 
+        jButton4.setText("Exit");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -159,9 +165,11 @@ for ( WindowListener wl : this.getWindowListeners())
                 .addComponent(jButton1)
                 .addGap(45, 45, 45)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(jButton4)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,7 +178,8 @@ for ( WindowListener wl : this.getWindowListeners())
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
                 .addContainerGap())
         );
 
@@ -211,7 +220,7 @@ for ( WindowListener wl : this.getWindowListeners())
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 44, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,16 +234,14 @@ for ( WindowListener wl : this.getWindowListeners())
                 .addContainerGap(85, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("Menu");
-
-        jMenuItem1.setText("Clear");
-        jMenu1.add(jMenuItem1);
-
-        jMenuBar1.add(jMenu1);
-
         jMenu2.setText("Options");
 
         jMenuItem2.setText("Check Availability");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuBar1.add(jMenu2);
@@ -242,9 +249,19 @@ for ( WindowListener wl : this.getWindowListeners())
         jMenu3.setText("Search");
 
         jMenuItem3.setText("By Name");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem3);
 
         jMenuItem4.setText("By Seat");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem4);
 
         jMenuBar1.add(jMenu3);
@@ -256,10 +273,6 @@ for ( WindowListener wl : this.getWindowListeners())
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(184, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -267,6 +280,10 @@ for ( WindowListener wl : this.getWindowListeners())
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(106, 106, 106)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,7 +318,7 @@ for ( WindowListener wl : this.getWindowListeners())
         for(int r=0;r<rows;r++){
             for(int c=0;c<columns;c++){
                if(seatingG.getState(r, c)==-1){
-              /*     if(book!=num){    
+                   if(book!=num){    
                         book++;
                    }else{
                         JOptionPane.showConfirmDialog(null, "You have win a free access to backstage!");
@@ -309,9 +326,9 @@ for ( WindowListener wl : this.getWindowListeners())
                         book=0;
                         Random rnd = new Random();
                         num=(int)(rnd.nextDouble() * 10 + 0);
-                   }*/
-                    seatingB.setState(1, r, c);
-                    seatingB.setName(name, r, c);
+                   }
+                    seatingG.setState(1, r, c);
+                    seatingG.setName(name, r, c);
                 }
                 if(seatingS.getState(r, c)==-1){
                     seatingS.setState(1, r, c);
@@ -350,6 +367,87 @@ for ( WindowListener wl : this.getWindowListeners())
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+                int available=0, booked=0, stateG, stateS, stateB;
+        for(int r=0;r<rows;r++){
+            for(int c=0;c<columns;c++){
+                if(seatingG.getState(r, c)==0){
+                    available++;                  
+                }
+                if(seatingG.getState(r, c)==1){
+                    booked++;
+                }
+                if(seatingS.getState(r, c)==0){
+                    available++;
+                    
+                }
+                if(seatingS.getState(r, c)==1){
+                    booked++;
+                }
+                if(seatingB.getState(r, c)==0){
+                    available++;
+                    
+                }
+                if(seatingB.getState(r, c)==1){
+                    booked++;
+                }
+                    
+                }
+                
+            }     
+        JOptionPane.showMessageDialog(this, "Number of available seats " + available + " Number of booked seats " + booked,
+        	"Full Name", JOptionPane.PLAIN_MESSAGE) ;
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        String name=JOptionPane.showInputDialog("Enter name you want to search: ");
+        for(int r=0;r<rows;r++){
+            for(int c=0;c<columns;c++){
+                if(seatingG.getState(r, c)==1){
+                     if(seatingG.getName(r, c).compareTo(name) == 0)
+                     {
+                        JOptionPane.showMessageDialog(this, "You have a booking in seat number "+(c+1)+ " Isle "+(r+1)); 
+                    }
+                }
+                if(seatingS.getState(r, c)==1){
+                   if(seatingS.getName(r, c).compareTo(name) == 0)
+                   {
+                        JOptionPane.showMessageDialog(this, "You have a seat in booking number "+(c+1)+ " Isle "+(r+4));
+                    } 
+                }
+                if(seatingB.getState(r, c)==1){
+                  if(seatingB.getName(r, c).compareTo(name) == 0)
+                  { 
+                        JOptionPane.showMessageDialog(this, "You have a booking in seat number "+(c+1)+ " Isle "+(r+7));
+                  }
+                }
+                
+            }
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        String i=JOptionPane.showInputDialog("Enter isle you want to search: ");
+        String s=JOptionPane.showInputDialog("Enter seat you want to search: ");
+        int isle, seat;
+        isle=Integer.parseInt(i);
+        seat=Integer.parseInt(s);
+        if(isle>0 && isle<4){
+           JOptionPane.showMessageDialog(this, "Purchaser name: "+seatingG.getName(isle-1, seat-1)+ " Receiving a back-stage pass: "+seatingG.getFreeAccess(isle-1, seat-1));
+        }
+        if(isle>3 && isle<7){
+           JOptionPane.showMessageDialog(this, "Purchaser name: "+seatingS.getName(isle-4, seat-1)+ " Receiving a free programe pass: "+seatingS.getFreeProgramme(isle-4, seat-1)); 
+        }
+        if(isle>6 && isle<10){
+            JOptionPane.showMessageDialog(this, "Purchaser name: "+seatingB.getName(isle-7, seat-1));
+        }
+    
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -390,14 +488,13 @@ for ( WindowListener wl : this.getWindowListeners())
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
