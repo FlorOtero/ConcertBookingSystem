@@ -11,7 +11,7 @@ package concertbookingsystem;
  */
 public class SeatingStateB extends SeatingState {
     public class Index{
-        int state=0;
+        int state;
         String name;
 
         public void setState(int state) {
@@ -24,6 +24,8 @@ public class SeatingStateB extends SeatingState {
             for(int j=0;j<10;j++){
                 if(index[i][j] == null){
                   index[i][j]= new Index();
+                  index[i][j].state=0;
+                  index[i][j].name="";
           
                 }
 
