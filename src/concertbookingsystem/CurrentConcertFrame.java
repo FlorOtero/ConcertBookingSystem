@@ -235,6 +235,11 @@ for ( WindowListener wl : this.getWindowListeners())
         jMenu2.setText("Options");
 
         jMenuItem2.setText("Check Availability");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuBar1.add(jMenu2);
@@ -245,6 +250,11 @@ for ( WindowListener wl : this.getWindowListeners())
         jMenu3.add(jMenuItem3);
 
         jMenuItem4.setText("By Seat");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem4);
 
         jMenuBar1.add(jMenu3);
@@ -310,8 +320,8 @@ for ( WindowListener wl : this.getWindowListeners())
                         Random rnd = new Random();
                         num=(int)(rnd.nextDouble() * 10 + 0);
                    }*/
-                    seatingB.setState(1, r, c);
-                    seatingB.setName(name, r, c);
+                    seatingG.setState(1, r, c);
+                    seatingG.setName(name, r, c);
                 }
                 if(seatingS.getState(r, c)==-1){
                     seatingS.setState(1, r, c);
@@ -330,9 +340,7 @@ for ( WindowListener wl : this.getWindowListeners())
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        /*Missing the message to let the users know that they cant unbook a seat in 
-        the bronze section.
-        */
+
         String name="";
         for(int r=0;r<rows;r++){
             for(int c=0;c<columns;c++){
@@ -351,6 +359,55 @@ for ( WindowListener wl : this.getWindowListeners())
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        int available=0, booked=0, stateG, stateS, stateB;
+        for(int r=0;r<rows;r++){
+            for(int c=0;c<columns;c++){
+                if(seatingG.getState(r, c)==0){
+                    available++;                  
+                }
+                if(seatingG.getState(r, c)==1){
+                    booked++;
+                }
+                if(seatingS.getState(r, c)==0){
+                    available++;
+                    
+                }
+                if(seatingS.getState(r, c)==1){
+                    booked++;
+                }
+                if(seatingB.getState(r, c)==0){
+                    available++;
+                    
+                }
+                if(seatingB.getState(r, c)==1){
+                    booked++;
+                }
+                    
+                }
+                
+            }
+       
+        JOptionPane.showMessageDialog(this, "Number of available seats " + available + " Number of booked seats " + booked,
+        	"Full Name", JOptionPane.PLAIN_MESSAGE) ;
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        String i=JOptionPane.showInputDialog("Enter isle you want to search: ");
+        String s=JOptionPane.showInputDialog("Enter seat you want to search: ");
+        int isle, seat;
+        isle=Integer.parseInt(i);
+        seat=Integer.parseInt(s);
+        if(isle>0 && isle<4){
+           JOptionPane.showMessageDialog(this, "Purchaser name: "+seatingG.getName(isle-1, seat-1)+ " Receiving a back-stage pass: "+seatingG.getFreeAccess(isle-1, seat-1));
+        }
+        if(isle>3 && isle<7){
+           JOptionPane.showMessageDialog(this, "Purchaser name: "+seatingS.getName(isle-4, seat-1)+ " Receiving a free programe pass: "+seatingS.getFreeProgramme(isle-4, seat-1)); 
+        }
+        if(isle>6 && isle<10){
+            JOptionPane.showMessageDialog(this, "Purchaser name: "+seatingB.getName(isle-7, seat-1));
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }
     /**
      * @param args the command line arguments
      */
