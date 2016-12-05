@@ -46,7 +46,71 @@ for ( WindowListener wl : this.getWindowListeners())
 });
         seatPlan();    
         
-    }     
+    }  
+    /*public class TextSave{
+
+  public static void main(String[] arg) throws Exception {
+    // Create some data to write.
+    int x=1, y=2, z=3;
+    
+    boolean hyperactive = true;
+
+    // Set up the FileWriter with our file name.
+    FileWriter saveFile = new FileWriter("TextSave.txt");
+
+    // Write the data to the file.
+    saveFile.write("\n");
+    saveFile.write(x + "\n");
+    saveFile.write(y + "\n");
+    saveFile.write(z + "\n");
+    saveFile.write(name + "\n");
+    saveFile.write(race + "\n");
+    saveFile.write(Boolean.toString(hyperactive) + "\n");
+    saveFile.write("\n");
+
+    // All done, close the FileWriter.
+    saveFile.close();
+
+  } //main()
+} // TextSave*/
+    /*import java.io.*;
+
+public class TextRead{
+
+  public static void main(String[] arg) throws Exception {
+    int x, y, z;
+    String name = "", race = "";
+    boolean hyperactive;
+
+    BufferedReader saveFile=
+        new BufferedReader(new FileReader("TextSave.txt"));
+
+    // Throw away the blank line at the top.
+    saveFile.readLine(); 
+    // Get the integer value from the String.
+    x = Integer.parseInt(saveFile.readLine()); 
+    y = Integer.parseInt(saveFile.readLine());
+    z = Integer.parseInt(saveFile.readLine());
+    name = saveFile.readLine();
+    race = saveFile.readLine();
+    hyperactive = Boolean.parseBoolean(saveFile.readLine());
+    // Not needed, but read blank line at the bottom.
+    saveFile.readLine(); 
+
+    saveFile.close();
+
+    // Print out the values.
+    System.out.println("x=" + x + " y=" + y + " z=" + z + "\n");
+    System.out.println("name: " + name + " race: " + race + "\n");
+    if (hyperactive) 
+      System.out.println("Oh, yeah. He's hyperactive all right.");
+    else System.out.println("What a mellow dude.");
+    System.out.println();
+
+  } //main()
+} // TextRead*/
+
+    
     public void restoreInfoConcert(){
         File archive = null;
         FileReader fr = null;
@@ -497,7 +561,7 @@ for ( WindowListener wl : this.getWindowListeners())
                    if(book!=num){    
                         book++;
                    }else{
-                        JOptionPane.showMessageDialog(null, "You have win a free access to backstage!", "Good news!", JOptionPane.PLAIN_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "You have won a free access to backstage!", "Good news!", JOptionPane.PLAIN_MESSAGE);
                         seatingG.setFreeAccess(true,r, c);
                         book=0;
                         Random rnd = new Random();
@@ -659,7 +723,9 @@ for ( WindowListener wl : this.getWindowListeners())
                 new CurrentConcertFrame().setVisible(true);
             }
         });
+    
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
