@@ -6,6 +6,9 @@
 package concertbookingsystem;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import javax.swing.*;
 import java.util.Random;
 /**
@@ -18,17 +21,17 @@ public class CurrentConcertFrame extends javax.swing.JFrame
     SeatingStateG seatingG;
     SeatingStateS seatingS;
     SeatingStateB seatingB;
+    String concertName, date;
+    int priceG, priceS, priceB;
     int  book=0;
     Random rnd = new Random();
     int num=(int)(rnd.nextDouble() * 10 + 0);
-    /*SeatingStateGold stateG;
-    SeatingStateSilver stateS;
-    SeatingStateBronze stateB;*/
     public CurrentConcertFrame()
     {
+        restoreInfoConcert();
         
         initComponents();
-        //this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        this.setTitle("Concert Name: " + concertName+ " Date: "+date);
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 //Remove any existing WindowListeners
 for ( WindowListener wl : this.getWindowListeners())
@@ -37,12 +40,54 @@ for ( WindowListener wl : this.getWindowListeners())
         @Override
         public void windowClosing(WindowEvent e) {
                  
-                      JOptionPane.showMessageDialog(null, "Please select the 'CLOSE' button to be able to save the changes, otherwise press 'Cancel'");
+                      JOptionPane.showMessageDialog(null, "Please select the 'EXIT' button to be able to save the changes, otherwise press 'Cancel'");
                  
         }
 });
-        seatPlan();      
+        seatPlan();    
+        
+    }     
+    public void restoreInfoConcert(){
+        File archive = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+        try {
+
+           archive = new File ("concert.txt");
+           fr = new FileReader (archive);
+           br = new BufferedReader(fr);
+
+           String line;
+
+           if((line=br.readLine())!=null){
+               concertName=line;
+           }
+           if((line=br.readLine())!=null){
+               date=line;
+           }
+           if((line=br.readLine())!=null){
+               priceB=Integer.parseInt(line);
+           }
+           if((line=br.readLine())!=null){
+               priceS=Integer.parseInt(line);
+           }
+           if((line=br.readLine())!=null){
+               priceG=Integer.parseInt(line);
+           }
+        }
+        catch(Exception e){
+           e.printStackTrace();
+        }finally{
+           try{                    
+              if( null != fr ){   
+                 fr.close();     
+              }                  
+           }catch (Exception e2){ 
+              e2.printStackTrace();
+           }
+        }   
     }
+
 
     public void seatPlan()
     {
@@ -103,11 +148,13 @@ for ( WindowListener wl : this.getWindowListeners())
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -163,18 +210,18 @@ for ( WindowListener wl : this.getWindowListeners())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jButton1)
-                .addGap(45, 45, 45)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jButton3)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
+                .addContainerGap(158, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
@@ -192,17 +239,6 @@ for ( WindowListener wl : this.getWindowListeners())
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 108, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 121, Short.MAX_VALUE)
         );
 
         jLabel1.setText("Gold Section");
@@ -233,6 +269,21 @@ for ( WindowListener wl : this.getWindowListeners())
                 .addComponent(jLabel3)
                 .addContainerGap(85, Short.MAX_VALUE))
         );
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 121, Short.MAX_VALUE)
+        );
+
+        jLabel4.setText("1          2          3          4          5         6        7           8            9        10");
+
+        jLabel5.setText("Seat number");
 
         jMenu2.setText("Options");
 
@@ -273,31 +324,44 @@ for ( WindowListener wl : this.getWindowListeners())
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(106, 106, 106)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addGap(0, 75, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
@@ -310,9 +374,7 @@ for ( WindowListener wl : this.getWindowListeners())
         myFrame.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
-/* Once the user selects one or more seats and press book a window asks to enter a name
-    for the booking and that name is storaged in each seat that contains a -1
-    */
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String name = JOptionPane.showInputDialog("Enter name for the booking");
         for(int r=0;r<rows;r++){
@@ -321,7 +383,7 @@ for ( WindowListener wl : this.getWindowListeners())
                    if(book!=num){    
                         book++;
                    }else{
-                        JOptionPane.showConfirmDialog(null, "You have win a free access to backstage!");
+                        JOptionPane.showMessageDialog(null, "You have win a free access to backstage!", "Good news!", JOptionPane.PLAIN_MESSAGE);
                         seatingG.setFreeAccess(true,r, c);
                         book=0;
                         Random rnd = new Random();
@@ -347,9 +409,7 @@ for ( WindowListener wl : this.getWindowListeners())
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        /*Missing the message to let the users know that they cant unbook a seat in 
-        the bronze section.
-        */
+
         String name="";
         for(int r=0;r<rows;r++){
             for(int c=0;c<columns;c++){
@@ -369,7 +429,7 @@ for ( WindowListener wl : this.getWindowListeners())
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-                int available=0, booked=0, stateG, stateS, stateB;
+                int available=0, booked=0, value=0;
         for(int r=0;r<rows;r++){
             for(int c=0;c<columns;c++){
                 if(seatingG.getState(r, c)==0){
@@ -377,54 +437,57 @@ for ( WindowListener wl : this.getWindowListeners())
                 }
                 if(seatingG.getState(r, c)==1){
                     booked++;
+                    value=value+priceG;
                 }
                 if(seatingS.getState(r, c)==0){
-                    available++;
-                    
+                    available++;                    
                 }
                 if(seatingS.getState(r, c)==1){
                     booked++;
+                    value=value+priceS;
                 }
                 if(seatingB.getState(r, c)==0){
-                    available++;
-                    
+                    available++;                   
                 }
                 if(seatingB.getState(r, c)==1){
                     booked++;
+                    value=value+priceB;
                 }
                     
                 }
                 
             }     
-        JOptionPane.showMessageDialog(this, "Number of available seats " + available + " Number of booked seats " + booked,
+        JOptionPane.showMessageDialog(this, "Number of available seats " + available + " Number of booked seats " + booked+" Total value of all sales: "+ value,
         	"Status", JOptionPane.PLAIN_MESSAGE) ;
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         String name=JOptionPane.showInputDialog("Enter name you want to search: ");
+        String res="";
         for(int r=0;r<rows;r++){
             for(int c=0;c<columns;c++){
                 if(seatingG.getState(r, c)==1){
                      if(seatingG.getName(r, c).compareTo(name) == 0)
                      {
-                        JOptionPane.showMessageDialog(this, "You have a booking in seat number "+(c+1)+ " Isle "+(r+1)); 
+                         res=res+"; Seat "+(c+1)+" Isle: "+(r+1);                       
                     }
                 }
                 if(seatingS.getState(r, c)==1){
                    if(seatingS.getName(r, c).compareTo(name) == 0)
                    {
-                        JOptionPane.showMessageDialog(this, "You have a seat in booking number "+(c+1)+ " Isle "+(r+4));
+                       res=res+"; Seat "+(c+1)+" Isle: "+(r+4);
                     } 
                 }
                 if(seatingB.getState(r, c)==1){
                   if(seatingB.getName(r, c).compareTo(name) == 0)
                   { 
-                        JOptionPane.showMessageDialog(this, "You have a booking in seat number "+(c+1)+ " Isle "+(r+7));
+                      res=res+"; Seat "+(c+1)+" Isle: "+(r+7);                       
                   }
                 }
                 
             }
         }
+        JOptionPane.showMessageDialog(this, "You have booking/s in: "+res);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -492,6 +555,8 @@ for ( WindowListener wl : this.getWindowListeners())
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
