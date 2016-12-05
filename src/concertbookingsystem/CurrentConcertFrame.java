@@ -29,7 +29,6 @@ public class CurrentConcertFrame extends javax.swing.JFrame
     public CurrentConcertFrame()
     {
         restoreInfoConcert();
-        
         initComponents();
         this.setTitle("Concert Name: " + concertName+ " Date: "+date);
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -38,12 +37,11 @@ for ( WindowListener wl : this.getWindowListeners())
         this.removeWindowListener(wl);
         this.addWindowListener(new WindowAdapter() {
         @Override
-        public void windowClosing(WindowEvent e) {
-                 
-                      JOptionPane.showMessageDialog(null, "Please select the 'EXIT' button to be able to save the changes, otherwise press 'Cancel'");
-                 
+        public void windowClosing(WindowEvent e) 
+        {                
+            JOptionPane.showMessageDialog(null, "Please select the 'EXIT' button to be able to save the changes, otherwise press 'Cancel'");                
         }
-});
+    });
         seatPlan();    
         
     }  
@@ -111,34 +109,38 @@ public class TextRead{
 } // TextRead*/
 
     
-    public void restoreInfoConcert(){
+    public void restoreInfoConcert()
+    {
         File archive = null;
         FileReader fr = null;
         BufferedReader br = null;
-        try {
-
-           archive = new File ("concert.txt");
-           fr = new FileReader (archive);
-           br = new BufferedReader(fr);
-
-           String line;
-
-           if((line=br.readLine())!=null){
-               concertName=line;
-           }
-           if((line=br.readLine())!=null){
-               date=line;
-           }
-           if((line=br.readLine())!=null){
-               priceB=Integer.parseInt(line);
-           }
-           if((line=br.readLine())!=null){
-               priceS=Integer.parseInt(line);
-           }
-           if((line=br.readLine())!=null){
-               priceG=Integer.parseInt(line);
-           }
-        }
+        try
+        {
+            archive = new File ("concert.txt");
+            fr = new FileReader (archive);
+            br = new BufferedReader(fr);
+            String line;
+            if((line=br.readLine())!=null)
+            {
+                concertName=line;
+            }
+            if((line=br.readLine())!=null)
+            {
+                date=line;
+            }
+            if((line=br.readLine())!=null)
+            {
+                priceB=Integer.parseInt(line);
+            }
+            if((line=br.readLine())!=null)
+            {
+                priceS=Integer.parseInt(line);
+            }
+            if((line=br.readLine())!=null)
+            {
+                priceG=Integer.parseInt(line);
+            }
+    }
         catch(Exception e){
            e.printStackTrace();
         }finally{
@@ -151,7 +153,6 @@ public class TextRead{
            }
         }   
     }
-
 
     public void seatPlan()
     {
@@ -561,9 +562,7 @@ public class TextRead{
         System.out.println(msr.generateRandomString());
         System.out.println(msr.generateRandomString());
     }
-}
-
-    
+}    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         PrincipalFrame myFrame=new PrincipalFrame();
         myFrame.setVisible(true);
@@ -571,8 +570,8 @@ public class TextRead{
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String name = JOptionPane.showInputDialog("Enter name for the booking");
-        boolean seatSelected=false;
+        String name = JOptionPane.showInputDialog("Enter name for the booking: ");
+        boolean seatSelected=false, goldBooking=false;
         for(int r=0;r<rows;r++){
             for(int c=0;c<columns;c++){
                if(seatingG.getState(r, c)==-1){
@@ -588,6 +587,7 @@ public class TextRead{
                     seatingG.setState(1, r, c);
                     seatingG.setName(name, r, c);
                     seatSelected=true;
+                    goldBooking=true;
                 }
                 if(seatingS.getState(r, c)==-1){
                     seatingS.setState(1, r, c);
@@ -608,6 +608,19 @@ public class TextRead{
         if(seatSelected==false){
             JOptionPane.showMessageDialog(null, "You must select a seat to book", "Warning", JOptionPane.PLAIN_MESSAGE);
         }
+     /*   if(goldBooking==true){
+            if(book!=num)
+            {    
+                book++;
+            }else
+            {
+                JOptionPane.showMessageDialog(null, "You have won a free access to backstage!", "Good news!", JOptionPane.PLAIN_MESSAGE);
+                seatingG.setFreeAccess(true,r, c);
+                book=0;
+                Random rnd = new Random();
+                num=(int)(rnd.nextDouble() * 10 + 0);
+            }
+        }*/
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

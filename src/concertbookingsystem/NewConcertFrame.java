@@ -174,9 +174,6 @@ public class NewConcertFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String fileConcert = "concert.txt";
-        /* we need an exception in case someone try to save without entering all
-        the data.
-        */
         try {
 
             FileWriter fileWriter = new FileWriter(fileConcert);
