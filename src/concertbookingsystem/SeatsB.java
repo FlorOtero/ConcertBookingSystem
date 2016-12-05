@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Mariano Dios
+ * @author Flor
  */
 public class SeatsB extends Seats{    
     Color bronze = new Color(204,153,102);

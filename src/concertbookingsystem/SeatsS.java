@@ -12,7 +12,7 @@ import javax.swing.JButton;
 
 /**
  *
- * @author Mariano Dios
+ * @author Flor
  */
 public class SeatsS extends Seats{     
 public SeatsS(int posx,int posy,int width,int height, SeatingStateS seat){
