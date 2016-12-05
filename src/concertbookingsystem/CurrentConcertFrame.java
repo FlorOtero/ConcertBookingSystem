@@ -666,48 +666,70 @@ public class TextRead{
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         String name=JOptionPane.showInputDialog("Enter name you want to search: ");
         String res="";
+        boolean nameExists=false;
         for(int r=0;r<rows;r++){
             for(int c=0;c<columns;c++){
                 if(seatingG.getState(r, c)==1){
                      if(seatingG.getName(r, c).compareTo(name) == 0)
                      {
-                         res=res+"; Seat "+(c+1)+" Isle: "+(r+1);                       
+                        res=res+"; Seat "+(c+1)+" Isle: "+(r+1); 
+                        nameExists=true;
                     }
                 }
                 if(seatingS.getState(r, c)==1){
                    if(seatingS.getName(r, c).compareTo(name) == 0)
                    {
-                       res=res+"; Seat "+(c+1)+" Isle: "+(r+4);
+                        res=res+"; Seat "+(c+1)+" Isle: "+(r+4);
+                        nameExists=true;
                     } 
                 }
                 if(seatingB.getState(r, c)==1){
                   if(seatingB.getName(r, c).compareTo(name) == 0)
                   { 
-                      res=res+"; Seat "+(c+1)+" Isle: "+(r+7);                       
+                        res=res+"; Seat "+(c+1)+" Isle: "+(r+7); 
+                        nameExists=true;                      
                   }
                 }
                 
             }
         }
-        JOptionPane.showMessageDialog(this, "You have booking/s in: "+res);
+        if(nameExists==true){
+          JOptionPane.showMessageDialog(this, "You have booking/s in: "+res);  
+        }else{
+           JOptionPane.showMessageDialog(this, "You must provide a valid name"); 
+        }
+        
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         String i=JOptionPane.showInputDialog("Enter isle you want to search: ");
         String s=JOptionPane.showInputDialog("Enter seat you want to search: ");
-        int isle, seat;
+        int isle, seat;      
         isle=Integer.parseInt(i);
         seat=Integer.parseInt(s);
-        if(isle>0 && isle<4){
-           JOptionPane.showMessageDialog(this, "Purchaser name: "+seatingG.getName(isle-1, seat-1)+ " Receiving a back-stage pass: "+seatingG.getFreeAccess(isle-1, seat-1));
+        if(seat>0 && seat<11){
+            if(isle>0 &&isle<10)
+            {
+               if(isle>0 && isle<4)
+                {
+                    JOptionPane.showMessageDialog(this, "Purchaser name: "+seatingG.getName(isle-1, seat-1)+ " Receiving a back-stage pass: "+seatingG.getFreeAccess(isle-1, seat-1));
+                }
+                if(isle>3 && isle<7)
+                {
+                    JOptionPane.showMessageDialog(this, "Purchaser name: "+seatingS.getName(isle-4, seat-1)+ " Receiving a free programe pass: "+seatingS.getFreeProgramme(isle-4, seat-1)); 
+                }
+                if(isle>6 && isle<10)
+                {
+                    JOptionPane.showMessageDialog(this, "Purchaser name: "+seatingB.getName(isle-7, seat-1));
+                } 
+            }else
+            {
+                JOptionPane.showMessageDialog(this, "Please provide a valid number of isle");
+            }
+        }else
+        {
+            JOptionPane.showMessageDialog(this, "Please provide a valid number of seat");           
         }
-        if(isle>3 && isle<7){
-           JOptionPane.showMessageDialog(this, "Purchaser name: "+seatingS.getName(isle-4, seat-1)+ " Receiving a free programe pass: "+seatingS.getFreeProgramme(isle-4, seat-1)); 
-        }
-        if(isle>6 && isle<10){
-            JOptionPane.showMessageDialog(this, "Purchaser name: "+seatingB.getName(isle-7, seat-1));
-        }
-    
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
