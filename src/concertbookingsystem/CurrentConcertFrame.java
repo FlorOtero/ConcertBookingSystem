@@ -392,7 +392,7 @@ public class TextRead{
                 .addGap(0, 53, Short.MAX_VALUE))
         );
 
-        jLabel4.setText("1          2          3          4         5         6          7          8         9         10");
+        jLabel4.setText("1          2          3          4         5         6         7        8       9        10");
         jLabel4.setToolTipText("");
 
         jLabel5.setText("Seat number");
@@ -469,8 +469,8 @@ public class TextRead{
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))))
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel15)
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
@@ -572,6 +572,7 @@ public class TextRead{
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String name = JOptionPane.showInputDialog("Enter name for the booking");
+        boolean seatSelected=false;
         for(int r=0;r<rows;r++){
             for(int c=0;c<columns;c++){
                if(seatingG.getState(r, c)==-1){
@@ -586,20 +587,26 @@ public class TextRead{
                    }
                     seatingG.setState(1, r, c);
                     seatingG.setName(name, r, c);
+                    seatSelected=true;
                 }
                 if(seatingS.getState(r, c)==-1){
                     seatingS.setState(1, r, c);
                     seatingS.setName(name, r, c);
+                    seatSelected=true;
                     int resp = JOptionPane.showConfirmDialog(null, "Do you want a free programme?");
                     if(resp==0){
                         seatingS.setFreeProgramme(true, r, c);
-                    }
+                    }                   
                 }
                 if(seatingB.getState(r, c)==-1){
                     seatingB.setState(1, r, c);
                     seatingB.setName(name, r, c);
+                    seatSelected=true;
                 }
             }
+        }
+        if(seatSelected==false){
+            JOptionPane.showMessageDialog(null, "You must select a seat to book", "Warning", JOptionPane.PLAIN_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
