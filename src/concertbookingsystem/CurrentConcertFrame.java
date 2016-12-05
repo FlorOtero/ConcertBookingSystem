@@ -611,13 +611,14 @@ public class TextRead{
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        boolean seatSelected=false;
         String name="";
         for(int r=0;r<rows;r++){
             for(int c=0;c<columns;c++){
                 if(seatingG.getState(r, c)==-1){
                     seatingG.setState(1, r, c);
                     seatingG.setName(name, r, c);
+                    seatSelected=true;
                 }
                 if(seatingS.getState(r, c)==-1){
                     seatingS.setState(0, r, c);
@@ -625,8 +626,12 @@ public class TextRead{
                     if(seatingS.getFreeProgramme(r, c)==true){
                         seatingS.setFreeProgramme(false, r, c);
                     }
+                    seatSelected=true;
                 }
             }
+        }
+        if(seatSelected==false){
+            JOptionPane.showMessageDialog(null, "You must select a seat to unbook", "Warning", JOptionPane.PLAIN_MESSAGE);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
