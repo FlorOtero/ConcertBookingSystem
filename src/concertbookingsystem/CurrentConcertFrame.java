@@ -45,70 +45,7 @@ for ( WindowListener wl : this.getWindowListeners())
         seatPlan();    
         
     }  
-    /*public class TextSave{
 
-  public static void main(String[] arg) throws Exception {
-    // Create some data to write.
-    int x=1, y=2, z=3;
-    
-    boolean hyperactive = true;
-
-    // Set up the FileWriter with our file name.
-    FileWriter saveFile = new FileWriter("TextSave.txt");
-
-    // Write the data to the file.
-    saveFile.write("\n");
-    saveFile.write(x + "\n");
-    saveFile.write(y + "\n");
-    saveFile.write(z + "\n");
-    saveFile.write(name + "\n");
-    saveFile.write(race + "\n");
-    saveFile.write(Boolean.toString(hyperactive) + "\n");
-    saveFile.write("\n");
-
-    // All done, close the FileWriter.
-    saveFile.close();
-
-  } //main()
-} // TextSave*/
-    /*import java.io.*;
-
-public class TextRead{
-
-  public static void main(String[] arg) throws Exception {
-    int x, y, z;
-    String name = "", race = "";
-    boolean hyperactive;
-
-    BufferedReader saveFile=
-        new BufferedReader(new FileReader("TextSave.txt"));
-
-    // Throw away the blank line at the top.
-    saveFile.readLine(); 
-    // Get the integer value from the String.
-    x = Integer.parseInt(saveFile.readLine()); 
-    y = Integer.parseInt(saveFile.readLine());
-    z = Integer.parseInt(saveFile.readLine());
-    name = saveFile.readLine();
-    race = saveFile.readLine();
-    hyperactive = Boolean.parseBoolean(saveFile.readLine());
-    // Not needed, but read blank line at the bottom.
-    saveFile.readLine(); 
-
-    saveFile.close();
-
-    // Print out the values.
-    System.out.println("x=" + x + " y=" + y + " z=" + z + "\n");
-    System.out.println("name: " + name + " race: " + race + "\n");
-    if (hyperactive) 
-      System.out.println("Oh, yeah. He's hyperactive all right.");
-    else System.out.println("What a mellow dude.");
-    System.out.println();
-
-  } //main()
-} // TextRead*/
-
-    
     public void restoreInfoConcert()
     {
         File archive = null;
@@ -220,7 +157,6 @@ public class TextRead{
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -231,6 +167,7 @@ public class TextRead{
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -353,17 +290,6 @@ public class TextRead{
                 .addGap(0, 30, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 163, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 354, Short.MAX_VALUE)
-        );
-
         jLabel14.setText("9");
 
         jLabel12.setText("7");
@@ -393,7 +319,8 @@ public class TextRead{
                 .addGap(0, 53, Short.MAX_VALUE))
         );
 
-        jLabel4.setText("1          2          3          4         5         6         7        8       9        10");
+        jLabel4.setLabelFor(jPanel1);
+        jLabel4.setText("1          2          3          4         5         6         7        8          9          10");
         jLabel4.setToolTipText("");
 
         jLabel5.setText("Seat number");
@@ -447,28 +374,31 @@ public class TextRead{
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 92, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(197, 197, 197))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 86, Short.MAX_VALUE)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel3)
-                                        .addGap(10, 10, 10))
+                                        .addGap(173, 173, 173))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel2))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))))
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(169, 169, 169))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addContainerGap())))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -512,8 +442,8 @@ public class TextRead{
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)))
+                        .addComponent(jLabel16)
+                        .addGap(404, 404, 404)))
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
         );
@@ -521,48 +451,8 @@ public class TextRead{
         pack();
     }// </editor-fold>//GEN-END:initComponents
  
-    public class MyStringRandomGen {
- 
-    private static final String CHAR_LIST =
-        "1234567890ABC";
-    private static final int RANDOM_STRING_LENGTH = 10;
-     
-    /**
-     * This method generates random string
-     * @return
-     */
-    public String generateRandomString(){
-         
-        StringBuffer randStr = new StringBuffer();
-        for(int i=0; i<RANDOM_STRING_LENGTH; i++){
-            int number = getRandomNumber();
-            char ch = CHAR_LIST.charAt(number);
-            randStr.append(ch);
-        }
-        return randStr.toString();
-    }
-     
-    /**
-     * This method generates random numbers
-     * @return int
-     */
-    private int getRandomNumber() {
-        int randomInt = 0;
-        Random randomGenerator = new Random();
-        randomInt = randomGenerator.nextInt(CHAR_LIST.length());
-        if (randomInt - 1 == -1) {
-            return randomInt;
-        } else {
-            return randomInt - 1;
-        }
-    }
-     
-    public void main(String a[]){
-        MyStringRandomGen msr = new MyStringRandomGen();
-        System.out.println(msr.generateRandomString());
-        System.out.println(msr.generateRandomString());
-    }
-}    
+
+  
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         PrincipalFrame myFrame=new PrincipalFrame();
         myFrame.setVisible(true);
@@ -608,19 +498,6 @@ public class TextRead{
         if(seatSelected==false){
             JOptionPane.showMessageDialog(null, "You must select a seat to book", "Warning", JOptionPane.PLAIN_MESSAGE);
         }
-     /*   if(goldBooking==true){
-            if(book!=num)
-            {    
-                book++;
-            }else
-            {
-                JOptionPane.showMessageDialog(null, "You have won a free access to backstage!", "Good news!", JOptionPane.PLAIN_MESSAGE);
-                seatingG.setFreeAccess(true,r, c);
-                book=0;
-                Random rnd = new Random();
-                num=(int)(rnd.nextDouble() * 10 + 0);
-            }
-        }*/
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -803,6 +680,7 @@ public class TextRead{
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -821,6 +699,5 @@ public class TextRead{
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
 }
