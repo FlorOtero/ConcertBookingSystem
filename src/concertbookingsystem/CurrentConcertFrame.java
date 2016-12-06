@@ -8,9 +8,13 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.*;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Flor
@@ -29,7 +33,7 @@ public class CurrentConcertFrame extends javax.swing.JFrame
     int  book=0;
     Random rnd = new Random();
     int num=(int)(rnd.nextDouble() * 10 + 0);
-    public CurrentConcertFrame()
+    public CurrentConcertFrame() throws IOException, FileNotFoundException, ClassNotFoundException
     {
         restoreInfoConcert();
         initComponents();
@@ -97,7 +101,7 @@ for ( WindowListener wl : this.getWindowListeners())
         }   
     }
 
-    public void seatPlan()
+    public void seatPlan() throws IOException, FileNotFoundException, ClassNotFoundException
     {
         for(int i=1;i<4;i++)
         {
@@ -662,9 +666,21 @@ for ( WindowListener wl : this.getWindowListeners())
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         
+        try {
             goldFile.saveFile(seatingG);
-           silverFile.saveFile(seatingS);
+        } catch (IOException ex) {
+            Logger.getLogger(CurrentConcertFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            silverFile.saveFile(seatingS);
+        } catch (IOException ex) {
+            Logger.getLogger(CurrentConcertFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
             bronzeFile.saveFile(seatingB);
+        } catch (IOException ex) {
+            Logger.getLogger(CurrentConcertFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
             this.dispose();
         
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -699,7 +715,13 @@ for ( WindowListener wl : this.getWindowListeners())
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CurrentConcertFrame().setVisible(true);
+                try {
+                    new CurrentConcertFrame().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(CurrentConcertFrame.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(CurrentConcertFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     
