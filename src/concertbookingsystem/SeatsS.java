@@ -16,8 +16,15 @@ import javax.swing.JButton;
  */
 public class SeatsS extends Seats{     
 public SeatsS(int posx,int posy,int width,int height, SeatingStateS seat){
+       int state;
        setBounds(posx, posy, width, height);
-       setBackground(Color.GRAY);
+       state=seat.getState(posy/30, posx/45);
+       if(state==0){
+         setBackground(Color.GRAY);
+       }
+       if(state==1){
+           setBackground(Color.RED);
+       }
        addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent evt) {
            // setBackground(Color.RED);

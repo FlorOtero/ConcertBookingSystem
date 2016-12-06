@@ -17,8 +17,15 @@ import javax.swing.JOptionPane;
 public class SeatsB extends Seats{    
     Color bronze = new Color(204,153,102);
 public SeatsB(int posx,int posy,int width,int height, SeatingStateB seat){
+        int state;
        setBounds(posx, posy, width, height);
-       setBackground(bronze); 
+       state=seat.getState(posy/30, posx/45);
+       if(state==0){
+         setBackground(bronze);
+       }
+       if(state==1){
+           setBackground(Color.RED);
+       } 
        addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent evt) {
            // setBackground(Color.RED);

@@ -23,6 +23,9 @@ public class CurrentConcertFrame extends javax.swing.JFrame
     SeatingStateB seatingB;
     String concertName, date;
     int priceG, priceS, priceB;
+    FilesG goldFile=new FilesG();
+    FilesS silverFile=new FilesS();
+    FilesB bronzeFile=new FilesB();
     int  book=0;
     Random rnd = new Random();
     int num=(int)(rnd.nextDouble() * 10 + 0);
@@ -103,7 +106,7 @@ for ( WindowListener wl : this.getWindowListeners())
                 case 1: 
                     SeatsG[][] seatG = new SeatsG[rows][columns];
                     seatingG= new SeatingStateG();
-                    
+                    seatingG=goldFile.readFile();
                     for(int row=0; row<rows;row++)
                     {
                         for(int column=0;column<columns; column++)
@@ -114,8 +117,10 @@ for ( WindowListener wl : this.getWindowListeners())
                     }  
                     break ;    
                 case 2:
-                    seatingS= new SeatingStateS();
                     SeatsS[][] seatS = new SeatsS[rows][columns];
+                    seatingS= new SeatingStateS();
+                    seatingS=silverFile.readFile();
+                    
                     for(int row=0; row<rows;row++)
                     {
                         for(int column=0;column<columns; column++)
@@ -127,6 +132,7 @@ for ( WindowListener wl : this.getWindowListeners())
                     break ;
                 case 3: 
                     seatingB= new SeatingStateB(); 
+                    seatingB=bronzeFile.readFile();
                     SeatsB[][] seatB = new SeatsB[rows][columns];
                     Color bronze = new Color(204,153,102);
                     for(int row=0; row<rows;row++)
@@ -655,7 +661,12 @@ for ( WindowListener wl : this.getWindowListeners())
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        this.dispose();
+        
+            goldFile.saveFile(seatingG);
+           silverFile.saveFile(seatingS);
+            bronzeFile.saveFile(seatingB);
+            this.dispose();
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
