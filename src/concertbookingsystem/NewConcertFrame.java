@@ -175,8 +175,11 @@ public class NewConcertFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String fileConcert = "concert.txt";
         try {
-
+            FileWriter file = null;
             FileWriter fileWriter = new FileWriter(fileConcert);
+            file = new FileWriter("SilverInfo.txt");
+            file = new FileWriter("GoldInfo.txt");
+            file = new FileWriter("BronzeInfo.txt");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(jTextField1.getText());
             bufferedWriter.newLine();
