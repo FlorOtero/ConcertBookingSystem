@@ -39,7 +39,7 @@ public SeatsB(int posx,int posy,int width,int height, SeatingStateB seat){
                     setBackground(bronze); 
                     break;
                 case 1:
-                    JOptionPane.showConfirmDialog(null, "You can't unbook a seat", "Warning", JOptionPane.CLOSED_OPTION);
+                    JOptionPane.showConfirmDialog(null, "You can't unbook a seat in bronze section", "Warning", JOptionPane.CLOSED_OPTION);
                 break;
             }
                 
