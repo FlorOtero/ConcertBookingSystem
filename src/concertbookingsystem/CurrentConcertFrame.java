@@ -543,7 +543,7 @@ for ( WindowListener wl : this.getWindowListeners())
         for(int r=0;r<rows;r++){
             for(int c=0;c<columns;c++){
                 if(seatingG.getState(r, c)==-1){
-                    seatingG.setState(1, r, c);
+                    seatingG.setState(0, r, c);
                     seatingG.setName(name, r, c);
                     seatSelected=true;
                 }
